@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
-#include <malloc.h>
+//#include <malloc.h>
+#include <locale.h>
+
 
 struct rectangle //Структура прямоугольник
 {
@@ -76,12 +78,16 @@ void input_dot(struct dot* a)//Ввод координат точек
 
 void first()//Первое задание
 {
+    system("clear");
+    printf("Перевод числа в двоичное\n");
     unsigned ch;
     un_input_int(&ch);
     printf("%s\n",Preob(ch));
 }
 void second()//Второе задание
 {
+    system("clear");
+    printf("Вычисление площади и периметра прямоугольника\n");
     struct rectangle in;
     printf("Введите длину: ");
     un_input_int(&in.a);
@@ -93,6 +99,8 @@ void second()//Второе задание
 }
 void third()//Третье задание
 {
+    system("clear");
+    printf("Вычисление длины отрезка\n");
     struct line otr;
     struct dot a, b;
     printf("Введите координаты точки а\n");
@@ -129,8 +137,10 @@ void out_mas(int* mas, unsigned n, unsigned m)//Вывод массива
         printf("\n");
       }
 }
-void four()
+void four()//Четвертое задание
 {
+    system("clear");
+    printf("Написать функцию-обёртку, принимающую указатель на область памяти, которую затем можно использовать как двумерный массив из элементов типа integer.\n");
     unsigned n, m;
     int* mas;
     printf("Введите кол-во строк n\n");
@@ -143,10 +153,26 @@ void four()
 }
 int main()
 {
+    setlocale(LC_CTYPE, "");
+    unsigned choise;
+    while(1)
+    {
 
-    //first();
-    //second();
-    //third();
-    four();
+
+        printf("Выберете задание\n1. Первое\n2. Второе\n3. Третье\n4. Четвертое\n0. Выход\n");
+        un_input_int(&choise);
+        switch(choise)
+        {
+            case(1): {first(); break;}
+            case(2): {second(); break;}
+            case(3): {third();break;}
+            case(4): {four();break;}
+            case(0): return 0;
+        }
+
+
+   }
+
+
     return 0;
 }
